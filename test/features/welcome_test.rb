@@ -1,8 +1,9 @@
 require "test_helper"
 
-describe "first page" do
-  it "has welcome" do
-    visit "/"
+feature "first page" do
+  scenario "has welcome" do
+    visit root_path
     page.text.downcase.must_include "welcome"
+    page.wont_have_content "Goodbye"
   end
 end
