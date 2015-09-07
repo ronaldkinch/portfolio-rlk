@@ -10,7 +10,7 @@ gem 'minitest-rails-capybara'
 gem 'pg'
 # gem 'phantomjs', require: 'phantomjs/poltergeist'
 gem 'rails', '4.2.3'
-# gem 'rails_12factor', group: :production
+gem 'rails_12factor', group: :production
 gem 'rake'
 gem 'sass-rails', '~> 5.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
