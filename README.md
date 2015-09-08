@@ -11,3 +11,8 @@ Theme foundation.zurb.com/templates/portfolio-theme.html
 ## Authors
 
 * Ronald Kinch https://github.com/ronaldkinch
+
+## Ideas from
+
+* Mary Dickson https://github.com/marythought
+  custom domain spec

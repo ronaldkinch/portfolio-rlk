@@ -1,9 +1,9 @@
 require "test_helper"
 
 feature "Use Zurb" do
-  scenario "has Zurb generated title" do
+  scenario "has Zurb generated javascript" do
     visit root_path
-    page.html.must_include 'foundation-rails'
+    page.html.must_include 'modernizr'
   end
 
   scenario "has hero class" do
