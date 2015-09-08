@@ -1,20 +1,19 @@
 language: ruby
 rvm:
-  - 1.9.2
-  - 1.9.3
+- 1.9.2
+- 1.9.3
 env:
-  # - DB=sqlite
-  # - DB=mysql
-  - DB=postgresql
+- DB=postgresql
 script:
-  - RAILS_ENV=test bundle exec rake db:migrate --trace
-  - bundle exec rake db:test:prepare
-  # - bundle exec rspec spec/
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake db:test:prepare
 before_script:
-  # - mysql -e 'create database my_app_test'
-  - psql -c 'create database my_app_test' -U postgres
-bundler_args: --binstubs=./bundler_stubs
+- psql -c 'create database my_app_test' -U postgres
+bundler_args: "--binstubs=./bundler_stubs"
 deploy:
   provider: heroku
-  # app: your-app-name # optional if it's the same as your repo name
-  api_key: "9c35b7ab-c97b-43cd-a047-d31ff0832f4f"
+  api_key:
+    secure: cVuySlqyFPR1QO1TSjJTfr+Q1IvMX6eX7bI2J2RvrDC8GEYqAayhFDb42JTDMU3YlzAM8gXISkaYc1YCxx6ynTQi3davZ95JmwhGO6GdGlhFeI8q1beChxw5AmmP75+JH/CtISOjXNLnDUpcXvlG+5mBwSH68lCUUaBAdJex6swdGZAGqXuwr37ml+dPLiCEO4wUKY3R0zoF3YOzTX8fMqHM1pUoW20YOoVP+tdpK44UriSq275hDBv2MUjz1pPCtIPYMosx/x4G9+5VG5kJ4oVICcTfC/khTiNh40MNMNplY8fFHfFUBTwEtKtSyqpee7jL3AaebDuDfxNi8ALFcAIiQwOuBTK6ifw0ar/3GLzRMPUCpUTgBfs3+K3rrhfJ8NdxM3mN9UbSvsOdWAI644uek6FS9Mzb8uhv+OZqQ2QZYSAZB149kAPt9L8OHP0gb7yN6IViSYWzWdy8Qb97Ixiy3MKvfZiGGEJ+QKCY/PISmcY+jph7JccTPFSMQg3wS3wiOIEbDZBbhBNILshFzmb0hVCHRiFrQpaCP1nUy8qubzyXddSDGMgS+k/cfttYB17mVFJrdjXhrZiclJBM+Fvs/g1WLrH/0zMqvIG/Hix/doJSh3WQqTEeu++EvgsPhor9y8YG3grRpR/sJTU28qd/8+2C396p0OUjTcl7BTI=
+  app: ronald-kinch-portfolio
+  on:
+    repo: ronaldkinch/portfolio-rlk
