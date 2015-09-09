@@ -17,6 +17,8 @@ class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
 end
 
+system 'rubocop'
+
 # class CapybaraTestCase < MiniTest::Spec
 #   include Capybara::DSL
 #   register_spec_type(/page$/, self)
