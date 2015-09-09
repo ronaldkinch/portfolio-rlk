@@ -1,14 +1,18 @@
 class ProjectsController < ApplicationController
+  before_action :set_project, only: [:show, :edit, :update, :destroy]
+
   def index
     @projects = Project.all
   end
 
   def show
-    set_project
   end
 
   def new
     @project = Project.new
+  end
+
+  def edit
   end
 
   def create
@@ -19,6 +23,14 @@ class ProjectsController < ApplicationController
     else
       flash[:error] = "Project could not be saved"
       render :new
+    end
+  end
+
+  def update
+    if @project.update_attributes(project_params)
+      redirect_to @project, notice: "Project was successfully updated."
+    else
+      render :edit
     end
   end
 
