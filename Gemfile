@@ -14,6 +14,7 @@ gem 'pg'
 gem 'rails', '4.2.3'
 gem 'rails_12factor', group: :production
 gem 'rake'
+gem 'rubocop'
 gem 'sass-rails', '~> 5.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'sqlite3'

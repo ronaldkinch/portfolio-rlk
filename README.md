@@ -1,4 +1,5 @@
 # Portfolio in Rails
+https://travis-ci.org/ronaldkinch/portfolio-rlk.svg?branch=master
 
 By Ronald Kinch.
 
