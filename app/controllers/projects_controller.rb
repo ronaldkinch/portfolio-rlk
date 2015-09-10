@@ -34,6 +34,12 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def destroy
+    @project.destroy
+    flash[:success] = "Project was successfully destroyed"
+    redirect_to projects_url
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

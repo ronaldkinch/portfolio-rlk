@@ -11,7 +11,7 @@ feature "Create a Project" do
     click_on "Create Project"
     # Then a new project should be created and displayed
     page.text.must_include "Project has been created"
-    # assert page.has_css?("#notice"), "Expected a flash notice"
+    assert page.has_css?(".notice"), "Expected a flash notice"
     page.status_code.must_equal 200
   end
 
