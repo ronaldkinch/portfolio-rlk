@@ -9,6 +9,8 @@ This is a portfolio app with a welcome page.
 Created with Zurb (gem 'foundation-rails').
 Theme foundation.zurb.com/templates/portfolio-theme.html
 
+Authentication added with Devise
+
 ## Authors
 
 * Ronald Kinch https://github.com/ronaldkinch
