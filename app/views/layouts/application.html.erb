@@ -38,6 +38,12 @@
       <hr>
       <div class="large-12 columns">
         <h4>Work</h4>
+        <% if user_signed_in? %>
+          <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to 'Sign Up', new_user_registration_path %>
+          | <%= link_to 'Sign In', new_user_session_path %>
+        <% end %>
         <p>Click on each image to view my work!</p>
 
         <ul class="clearing-thumbs small-block-grid-1 medium-block-grid-2 large-block-grid-4" data-clearing>
