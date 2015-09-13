@@ -2,6 +2,9 @@ require "test_helper"
 
 feature "Delete An Article" do
   scenario "delete an existing article" do
+    # Given a user is signed in
+    sign_in
+
     # Given an existing article
     article = articles(:test_article)
     visit articles_path

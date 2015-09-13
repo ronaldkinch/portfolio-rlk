@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /articles
   # GET /articles.json
@@ -25,30 +26,13 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
     @article = Article.new(article_params)
-
-    respond_to do |format|
-      if @article.save
-        format.html { redirect_to @article, notice: 'Article was successfully created.' }
-        format.json { render :show, status: :created, location: @article }
-      else
-        format.html { render :new }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
-      end
-    end
+    create_logic
   end
 
   # PATCH/PUT /articles/1
   # PATCH/PUT /articles/1.json
   def update
-    respond_to do |format|
-      if @article.update(article_params)
-        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
-        format.json { render :show, status: :ok, location: @article }
-      else
-        format.html { render :edit }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
-      end
-    end
+    update_logic
   end
 
   # DELETE /articles/1
@@ -71,5 +55,31 @@ class ArticlesController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def article_params
     params.require(:article).permit(:title, :body)
+  end
+
+  # Encapsulate logic to reduce method size
+  def create_logic
+    respond_to do |format|
+      if @article.save
+        current_user.articles << @article
+        format.html { redirect_to @article, notice: 'Article was successfully created.' }
+        format.json { render :show, status: :created, location: @article }
+      else
+        format.html { render :new }
+        format.json { render json: @article.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update_logic
+    respond_to do |format|
+      if @article.update(article_params)
+        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
+        format.json { render :show, status: :ok, location: @article }
+      else
+        format.html { render :edit }
+        format.json { render json: @article.errors, status: :unprocessable_entity }
+      end
+    end
   end
 end

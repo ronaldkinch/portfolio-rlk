@@ -11,7 +11,6 @@ feature "Authentication Sign In & Out" do
     click_on "Sign Out"
     # Then the sign out is successful
     page.text.must_include "Signed out successfully"
-    page.text.wont_include "There was a problem"
   end
 
   scenario "invalid sign in" do

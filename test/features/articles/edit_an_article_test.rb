@@ -2,6 +2,9 @@ require "test_helper"
 
 feature "Edit An Article" do
   scenario "submit updates to an existing article" do
+    # Given a user is signed in
+    sign_in
+
     # Given an existing article
     visit article_path(articles(:test_article))
     # When I click edit and submit the changed data
