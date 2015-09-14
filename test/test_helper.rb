@@ -15,10 +15,10 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
   # Add more helper methods to be used by all tests here...
-  def sign_in
+  def sign_in(role = :editor)
     # Sign in authenticated user
     visit new_user_session_path
-    fill_in "Email", with: users(:user).email
+    fill_in "Email", with: users(role).email
     fill_in "Password", with: "password"
     click_on "Log in"
   end

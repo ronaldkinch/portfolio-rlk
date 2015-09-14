@@ -1,12 +1,17 @@
 <p id="notice"><%= notice %></p>
 
+<p id="status">
+  <strong>Status:</strong>
+  <%= @article.published? ? "Published" : "Unpublished" %>
+</p>
+
 <p>
   <strong>Title:</strong>
   <%= @article.title %>
 </p>
 
 <p id="author">
-  <b>By:</b>
+  <strong>By:</strong>
   <%= @article.author.email %>
 </p>
 
