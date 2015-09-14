@@ -23,7 +23,7 @@ feature "Authentication Sign In & Out" do
     # Then the sign in is unsuccessful
     page.text.must_include "Invalid email or password"
     # When the user signs in with invalid password
-    fill_in "Email", with: users(:user).email
+    fill_in "Email", with: users(:author).email
     fill_in "Password", with: "invalid"
     click_on "Log in"
     # Then the sign in is unsuccessful

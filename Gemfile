@@ -11,6 +11,7 @@ gem 'jquery-rails'
 gem 'minitest-rails'
 gem 'minitest-rails-capybara'
 gem 'pg'
+gem 'pundit'
 # gem 'phantomjs', require: 'phantomjs/poltergeist'
 gem 'rails', '4.2.3'
 gem 'rails_12factor', group: :production
