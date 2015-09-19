@@ -6,9 +6,8 @@
     <div class="small-12 medium-8 large-6 columns">
       <div class="nav-bar">
         <ul class="button-group">
-        <li><%= link_to 'Home', root_path %></li>
-        <li><a href="" class="button">Home</a></li>
-        <li><a href="#about" class="button">About</a></li>
+        <li><%= link_to 'Home', root_path, class: :button %></li>
+        <li><%= link_to 'About', root_path({anchor: 'about'}), class: :button %></li>
         <li><a href="#work" class="button">Work</a></li>
         <li><a href="#contact" class="button">Contact</a></li>
         </ul>

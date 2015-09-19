@@ -1,23 +1,20 @@
 require "test_helper"
+# Publish Articles
+# As an editor I want to publish articles
+# As an author I should not be able to publish articles
+# As an author I should see a 'not authorized' message if I try to hack
 
 feature "Publish An Article" do
   scenario "authors can't publish" do
-    # Given an author's account
     sign_in(:author)
-    # When I visit the new page
     visit new_article_path
-    # Then there is no checkbox for published
-    page.wont_have_field('article[published]')
+    page.wont_have_field('published')
   end
 
   scenario "editors can publish" do
-    # Given an editor's account
     sign_in(:editor)
-    # When I visit the new page
     visit new_article_path
-    # Then there is a checkbox for published
-    page.must_have_field('article[published]')
-
+    page.must_have_field('Published')
     # When I submit the form
     fill_in "Title", with: articles(:test_article).title
     fill_in "Body", with: articles(:test_article).body
