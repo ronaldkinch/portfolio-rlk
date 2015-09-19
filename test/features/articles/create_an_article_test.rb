@@ -24,6 +24,16 @@ feature "Create An Article" do
     page.text.must_include "Status: Unpublished"
   end
 
+  scenario "author can not create new article with bad data" do
+    sign_in(:author)
+    visit new_article_path
+    fill_in "Title", with: ""
+    fill_in "Body", with: "Bad article with no title."
+    click_on "Create Article"
+    page.text.must_include "Article could not be saved"
+    page.text.must_include "Title can't be blank"
+  end
+
   scenario "editor can create new article" do
     sign_in(:editor)
     visit new_article_path

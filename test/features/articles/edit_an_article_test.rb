@@ -22,6 +22,16 @@ feature "Edit An Article" do
     page.text.wont_include old_title
   end
 
+  scenario "author can not update an article with bad data" do
+    sign_in(:author)
+    visit edit_article_path(articles(:test_article))
+    fill_in "Title", with: ""
+    fill_in "Body", with: "Bad article with no title."
+    click_on "Update Article"
+    page.text.must_include "Article could not be saved"
+    page.text.must_include "Title can't be blank"
+  end
+
   scenario "editor can submit updates to an existing article" do
     sign_in(:editor)
     old_title = articles(:test_article).title
