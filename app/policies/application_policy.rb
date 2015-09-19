@@ -2,7 +2,7 @@ class ApplicationPolicy
   attr_reader :user, :record
 
   def initialize(user, record)
-    @user = user
+    @user = user || NullUser.new
     @record = record
   end
 
@@ -11,7 +11,7 @@ class ApplicationPolicy
   end
 
   def show?
-    scope.where(:id => record.id).exists?
+    scope.where(id: record.id).exists?
   end
 
   def create?
@@ -42,12 +42,26 @@ class ApplicationPolicy
     attr_reader :user, :scope
 
     def initialize(user, scope)
-      @user = user
+      @user = user || NullUser.new
       @scope = scope
     end
 
     def resolve
       scope
+    end
+  end
+
+  class NullUser
+    def editor?
+      false
+    end
+
+    def author?
+      false
+    end
+
+    def visitor?
+      true
     end
   end
 end

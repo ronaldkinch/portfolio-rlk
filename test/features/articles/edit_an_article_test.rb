@@ -1,18 +1,37 @@
 require "test_helper"
+# Update Articles
+# As an editor I want to update articles
+# As an author, I want to update articles
+# As a site visitor, I should not be able to update articles
 
 feature "Edit An Article" do
-  scenario "submit updates to an existing article" do
-    # Given a user is signed in
-    sign_in(:author)
+  scenario "site visitor cannot visit edit article page" do
+    visit edit_article_path(articles(:test_article))
+    page.must_have_content "You need to sign in or sign up"
+  end
 
-    # Given an existing article
-    visit article_path(articles(:test_article))
+  scenario "site visitor cannot see edit article button" do
+    visit articles_path
+    page.wont_have_link "Edit"
+  end
+
+  scenario "author can submit updates to an existing article" do
+    sign_in(:author)
     old_title = articles(:test_article).title
-    # When I click edit and submit the changed data
-    click_on "Edit"
+    visit edit_article_path(articles(:test_article))
     fill_in "Title", with: "Becoming a Web Developer"
     click_on "Update Article"
-    # Then the content is updated
+    page.text.must_include "Article was successfully updated"
+    page.text.must_include "Becoming a Web Developer"
+    page.text.wont_include old_title
+  end
+
+  scenario "editor can submit updates to an existing article" do
+    sign_in(:editor)
+    old_title = articles(:test_article).title
+    visit edit_article_path(articles(:test_article))
+    fill_in "Title", with: "Becoming a Web Developer"
+    click_on "Update Article"
     page.text.must_include "Article was successfully updated"
     page.text.must_include "Becoming a Web Developer"
     page.text.wont_include old_title

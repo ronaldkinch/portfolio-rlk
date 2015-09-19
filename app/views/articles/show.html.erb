@@ -1,24 +1,37 @@
-<p id="notice"><%= notice %></p>
+<div class="row work" id="work">
+  <hr>
+  <div class="large-12 columns">
+    <h4>Work</h4>
+    <div class="large-4 columns">
+      <h3>Projects</h3>
+    </div>
+    <div class="large-8 columns">
+      <h3>Articles</h3>
+      <%= yield %>
+      <p id="notice"><%= notice %></p>
 
-<p id="status">
-  <strong>Status:</strong>
-  <%= @article.published? ? "Published" : "Unpublished" %>
-</p>
+      <p id="status">
+        <strong>Status:</strong>
+        <%= @article.published? ? "Published" : "Unpublished" %>
+      </p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
+      <p>
+        <strong>Title:</strong>
+        <%= @article.title %>
+      </p>
 
-<p id="author">
-  <strong>By:</strong>
-  <%= @article.author.email %>
-</p>
+      <p id="author">
+        <strong>By:</strong>
+        <%= @article.author.email %>
+      </p>
 
-<p>
-  <strong>Body:</strong>
-  <%= @article.body %>
-</p>
+      <p>
+        <strong>Body:</strong>
+        <%= @article.body %>
+      </p>
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+      <%= link_to 'Edit', edit_article_path(@article) %> |
+      <%= link_to 'Back', articles_path %>
+    </div>
+  </div>
+</div>

@@ -2,8 +2,22 @@ test_article:
   title: Becoming a Code Fellow
   body: Means striving for excellence.
   author: author
+  published: false
+
+pub_article:
+  title: Life after Code Fellows
+  body: Continued striving for improvement.
+  author: author
+  published: true
+
+first_article:
+  title: Ruby
+  body: The base of Rails
+  author: editor
+  published: true
 
 next_article:
   title: Code Rails
   body: This is web development training
   author: editor
+  published: false
