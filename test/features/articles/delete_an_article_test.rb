@@ -1,10 +1,4 @@
 require "test_helper"
-# Delete Articles
-# As an editor I want to delete articles
-# As an editor I should not be able to delete published articles
-# As an author I should not be able to delete published articles
-# As an author, I want to delete my unpublished articles
-# As a site visitor, I should not be able to delete articles
 
 feature "Delete An Article" do
   before(:all) do

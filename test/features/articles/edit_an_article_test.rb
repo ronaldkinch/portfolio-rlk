@@ -1,8 +1,4 @@
 require "test_helper"
-# Update Articles
-# As an editor I want to update articles
-# As an author, I want to update articles
-# As a site visitor, I should not be able to update articles
 
 feature "Edit An Article" do
   scenario "site visitor cannot visit edit article page" do

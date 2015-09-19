@@ -1,9 +1,4 @@
 require "test_helper"
-# View Articles
-# As an editor I want to see all articles regardless of published status
-# As an author, I want to only see my own articles
-# As a site visitor, (user) I want to read (view) articles
-# As a site visitor, I want to only see published articles
 
 feature "Visit The Article Index" do
   scenario "site visitor can see (only) published articles" do
