@@ -19,7 +19,8 @@ class ArticlePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       if user.editor?
-        scope.all # default 'scope' is whatever its initialized with, eg Article.all
+        # 'scope' is whatever its initialized with, eg Article.all
+        scope.all
       elsif user.author?
         scope.where(author: user, published: false)
       else

@@ -1,8 +1,4 @@
 require "test_helper"
-# Create Articles
-# As an editor I want to create articles
-# As an author, I want to create articles
-# As a site visitor, I should not be able to create articles
 
 feature "Create An Article" do
   scenario "site visitor cannot visit new article page" do

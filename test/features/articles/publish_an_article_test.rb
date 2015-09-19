@@ -1,8 +1,4 @@
 require "test_helper"
-# Publish Articles
-# As an editor I want to publish articles
-# As an author I should not be able to publish articles
-# As an author I should see a 'not authorized' message if I try to hack
 
 feature "Publish An Article" do
   scenario "authors can't publish" do
