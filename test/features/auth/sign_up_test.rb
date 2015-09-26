@@ -11,8 +11,8 @@ feature "Authentication Sign Up" do
     fill_in "Password confirmation", with: "password"
     click_on "Sign up"
     # Then I should be signed up
-    # page.text.must_include "You have signed up successfully"
-    # page.text.wont_include "prohibited this user from being saved"
+    page.text.must_include "You have signed up successfully"
+    page.text.wont_include "prohibited this user from being saved"
   end
 
   scenario "invalid signup information fails" do
@@ -25,7 +25,7 @@ feature "Authentication Sign Up" do
     fill_in "Password confirmation", with: "bar"
     click_on "Sign up"
     # Then I should be signed up
-    # page.text.must_include "prohibited this user from being saved"
+    page.text.must_include "prohibited this user from being saved"
     page.text.wont_include "You have signed up successfully"
   end
 
