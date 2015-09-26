@@ -1,20 +1,49 @@
 require "test_helper"
 
 feature "Create An Article" do
-  scenario "submit form data to create new article" do
-    # Given a user is signed in
-    sign_in
-
-    # Given a completed new article form
+  scenario "site visitor cannot visit new article page" do
     visit new_article_path
-    fill_in "Title", with: "Code Rails"
+    page.must_have_content "You need to sign in or sign up"
+  end
+
+  scenario "site visitor cannot see new article button" do
+    visit articles_path
+    page.wont_have_link "New Article"
+  end
+
+  scenario "author can create new article" do
+    sign_in(:author)
+    visit new_article_path
+    fill_in "Title", with: "New Code Rails article"
     fill_in "Body", with: "This is how I learned to make web apps."
-    # When I submit the form
     click_on "Create Article"
-    # Then a new article should be created and displayed
     page.text.must_include "Article was successfully created"
     page.text.must_include "how I learned to make web apps"
     page.has_css? "#author"
-    page.text.must_include users(:user).email
+    page.text.must_include users(:author).email
+    page.text.must_include "Status: Unpublished"
+  end
+
+  scenario "author can not create new article with bad data" do
+    sign_in(:author)
+    visit new_article_path
+    fill_in "Title", with: ""
+    fill_in "Body", with: "Bad article with no title."
+    click_on "Create Article"
+    page.text.must_include "Article could not be saved"
+    page.text.must_include "Title can't be blank"
+  end
+
+  scenario "editor can create new article" do
+    sign_in(:editor)
+    visit new_article_path
+    fill_in "Title", with: "New Code Rails article"
+    fill_in "Body", with: "This is how I learned to make web apps."
+    click_on "Create Article"
+    page.text.must_include "Article was successfully created"
+    page.text.must_include "how I learned to make web apps"
+    page.has_css? "#author"
+    page.text.must_include users(:editor).email
+    page.text.must_include "Status: Unpublished"
   end
 end
