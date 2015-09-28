@@ -30,7 +30,6 @@ feature "Authentication Sign Up" do
   end
 
   scenario "sign in with twitter works" do
-    skip
     OmniAuth.config.test_mode = true
     OmniAuth.config.add_mock(:twitter,
                              uid: '12345',
@@ -43,7 +42,7 @@ feature "Authentication Sign Up" do
       OmniAuth.config.mock_auth[:twitter]
 
     click_on "Sign in with Twitter"
-    page.must_have_content "Logged in as test_twitter_user"
+    page.must_have_content "test_twitter_user, you are signed in!"
     # Courtesy of: https://gist.github.com/ivanoats/7071730
     # with help from https://github.com/intridea/omniauth/wiki/Integration-Testing
   end
